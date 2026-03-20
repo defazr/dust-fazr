@@ -1,8 +1,28 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
-  --background: #ffffff;
+  --background: #000000;
+  --foreground: #fafafa;
+  --card: #121212;
+  --card-border: #1e1e1e;
+  --card-hover: #1a1a1a;
+  --muted: #a1a1aa;
+  --muted-dim: #404040;
+  --kpi-font-size: 48px;
+}
+
+html.light {
+  --background: #f5f5f5;
   --foreground: #171717;
+  --card: #ffffff;
+  --card-border: #e5e5e5;
+  --card-hover: #fafafa;
+  --muted: #737373;
+  --muted-dim: #a3a3a3;
 }
 
 @theme inline {
@@ -12,15 +32,54 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Light theme overrides for hardcoded colors */
+html.light body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+html.light .bg-\[\#121212\] { background-color: var(--card) !important; }
+html.light .bg-\[\#1a1a1a\] { background-color: var(--card-hover) !important; }
+html.light .bg-black { background-color: var(--background) !important; }
+html.light .bg-black\/60 { background-color: rgba(245, 245, 245, 0.8) !important; }
+html.light .border-\[\#1e1e1e\] { border-color: var(--card-border) !important; }
+html.light .text-white { color: var(--foreground) !important; }
+html.light .text-neutral-300 { color: #404040 !important; }
+html.light .text-neutral-200 { color: #262626 !important; }
+html.light .text-neutral-500 { color: #737373 !important; }
+html.light .text-neutral-600 { color: #525252 !important; }
+html.light .text-neutral-700 { color: #a3a3a3 !important; }
+html.light .text-zinc-400 { color: #525252 !important; }
+html.light .text-zinc-500 { color: #737373 !important; }
+html.light .text-zinc-600 { color: #a3a3a3 !important; }
+html.light .text-zinc-700 { color: #d4d4d8 !important; }
+html.light .placeholder-zinc-600::placeholder { color: #a3a3a3 !important; }
+html.light .bg-zinc-800 { background-color: #e5e5e5 !important; }
+html.light .hover\:bg-zinc-700:hover { background-color: #d4d4d4 !important; }
+html.light .hover\:bg-\[\#1a1a1a\]:hover { background-color: var(--card-hover) !important; }
+html.light .hover\:border-zinc-600:hover { border-color: #a3a3a3 !important; }
+html.light .hover\:border-zinc-700:hover { border-color: #d4d4d4 !important; }
+html.light .shadow-black\/10 { --tw-shadow-color: rgba(0,0,0,0.05) !important; }
+html.light .shadow-black\/30 { --tw-shadow-color: rgba(0,0,0,0.1) !important; }
+html.light .shadow-black\/40 { --tw-shadow-color: rgba(0,0,0,0.1) !important; }
+html.light .bg-zinc-900 { background-color: #e5e5e5 !important; }
+html.light .bg-black\/80 { background-color: rgba(245, 245, 245, 0.9) !important; }
+
+/* Ticker animation */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  display: inline-block;
+  animation: ticker-scroll 30s linear infinite;
 }

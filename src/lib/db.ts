@@ -1,0 +1,76 @@
+import { Pool } from "pg";
+import type { City, AirQualityLatest, AirQualityHistory, CityWithAirQuality } from "./types";
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL || "postgresql://dust:dust@localhost:5432/dustfazr",
+});
+
+export async function getCityBySlug(slug: string): Promise<CityWithAirQuality | null> {
+  const client = await pool.connect();
+  try {
+    // Get city
+    const cityResult = await client.query<City>(
+      "SELECT * FROM cities WHERE slug = $1 AND is_active = TRUE",
+      [slug]
+    );
+    if (cityResult.rows.length === 0) return null;
+    const city = cityResult.rows[0];
+
+    // Get latest air quality
+    const latestResult = await client.query<AirQualityLatest>(
+      "SELECT * FROM air_quality_latest WHERE city_id = $1",
+      [city.id]
+    );
+    const airQuality = latestResult.rows[0] || null;
+
+    // Get 24h history
+    const historyResult = await client.query<AirQualityHistory>(
+      "SELECT * FROM air_quality_history WHERE city_id = $1 AND recorded_at > NOW() - INTERVAL '24 hours' ORDER BY recorded_at ASC",
+      [city.id]
+    );
+
+    // Get nearby cities (by distance, limit 8)
+    const nearbyResult = await client.query<City>(
+      `SELECT * FROM cities
+       WHERE id != $1 AND is_active = TRUE AND latitude IS NOT NULL AND longitude IS NOT NULL
+       ORDER BY (latitude - $2)^2 + (longitude - $3)^2 ASC
+       LIMIT 8`,
+      [city.id, city.latitude, city.longitude]
+    );
+
+    return {
+      ...city,
+      airQuality,
+      history: historyResult.rows,
+      nearbyCities: nearbyResult.rows,
+    };
+  } finally {
+    client.release();
+  }
+}
+
+export async function getAllCitySlugs(): Promise<string[]> {
+  const client = await pool.connect();
+  try {
+    const result = await client.query("SELECT slug FROM cities WHERE is_active = TRUE");
+    return result.rows.map((r) => r.slug);
+  } finally {
+    client.release();
+  }
+}
+
+export async function getAllCitiesWithLatest(): Promise<(City & { aqi: number | null })[]> {
+  const client = await pool.connect();
+  try {
+    const result = await client.query(
+      `SELECT c.*, aq.aqi
+       FROM cities c
+       LEFT JOIN air_quality_latest aq ON c.id = aq.city_id
+       WHERE c.is_active = TRUE
+       ORDER BY c.name ASC`
+    );
+    return result.rows;
+  } finally {
+    client.release();
+  }
+}
