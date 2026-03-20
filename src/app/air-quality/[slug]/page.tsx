@@ -179,7 +179,7 @@ export default async function CityAirQualityPage({ params }: PageProps) {
           <HistorySection history={data.history} />
         </section>
 
-        <NearbyCities cities={data.nearbyCities} currentCity={data.name} />
+        <NearbyCities cities={data.nearbyCities} currentCity={data.name} currentSlug={data.slug} />
 
         {/* SEO footer text */}
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6 mt-8">

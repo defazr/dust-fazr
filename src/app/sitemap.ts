@@ -1,8 +1,9 @@
 import { MetadataRoute } from "next";
 import { getAllCitySlugs } from "@/lib/db";
+import { COMPARE_PAIRS } from "@/lib/compare";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.com";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
   let slugs: string[] = [];
   try {
@@ -18,6 +19,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
+  const comparePages = COMPARE_PAIRS.map((pair) => ({
+    url: `${baseUrl}/compare/${pair.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "hourly" as const,
+    priority: 0.7,
+  }));
+
   return [
     {
       url: baseUrl,
@@ -26,5 +34,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     ...cityPages,
+    ...comparePages,
   ];
 }
