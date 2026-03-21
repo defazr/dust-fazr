@@ -23,10 +23,25 @@ export const metadata: Metadata = {
     template: "%s | DUST.FAZR",
   },
   description: "Check real-time air quality for 130+ cities worldwide. Live AQI, PM2.5, PM10 pollution data with health recommendations. Updated hourly.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr"),
+  icons: {
+    icon: "/favicon.png",
+  },
   openGraph: {
     siteName: "DUST.FAZR",
     type: "website",
+    images: [
+      {
+        url: "/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "DUST.FAZR — Air Quality Today",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-default.png"],
   },
 };
 
