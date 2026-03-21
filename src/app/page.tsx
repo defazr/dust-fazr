@@ -63,6 +63,12 @@ export default async function Home() {
               {link.name}
             </Link>
           ))}
+          <Link
+            href="/top-most-polluted-cities"
+            className="text-sm text-zinc-500 hover:text-white border border-[#1e1e1e] hover:border-zinc-600 rounded-full px-4 py-1.5 transition-all duration-200"
+          >
+            Most Polluted →
+          </Link>
         </div>
       </section>
 

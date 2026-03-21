@@ -75,6 +75,24 @@ export async function getCityWithLatest(citySlug: string): Promise<(City & { aqi
   }
 }
 
+export async function getTopPollutedCities(limit = 10): Promise<(City & { aqi: number; pm25: number | null; pm10: number | null; updated_at: string | null })[]> {
+  const client = await pool.connect();
+  try {
+    const result = await client.query(
+      `SELECT c.*, aq.aqi, aq.pm25, aq.pm10, aq.updated_at
+       FROM cities c
+       JOIN air_quality_latest aq ON c.id = aq.city_id
+       WHERE c.is_active = TRUE AND aq.aqi IS NOT NULL
+       ORDER BY aq.aqi DESC
+       LIMIT $1`,
+      [limit]
+    );
+    return result.rows;
+  } finally {
+    client.release();
+  }
+}
+
 export async function getAllCitiesWithLatest(): Promise<(City & { aqi: number | null })[]> {
   const client = await pool.connect();
   try {
