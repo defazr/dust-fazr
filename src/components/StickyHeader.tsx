@@ -7,9 +7,8 @@ import { ThemeToggle } from "./ThemeToggle";
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Ranking", href: "/top-most-polluted-cities" },
-  { label: "Seoul", href: "/air-quality/seoul-air-quality" },
-  { label: "Tokyo", href: "/air-quality/tokyo-air-quality" },
-  { label: "Beijing", href: "/air-quality/beijing-air-quality" },
+  { label: "Cleanest", href: "/best-air-quality-cities" },
+  { label: "Countries", href: "/air-quality-by-country" },
 ];
 
 export function StickyHeader() {

@@ -75,6 +75,74 @@ export async function getCityWithLatest(citySlug: string): Promise<(City & { aqi
   }
 }
 
+export async function getCleanestCities(limit = 10): Promise<(City & { aqi: number; pm25: number | null; pm10: number | null; updated_at: string | null })[]> {
+  const client = await pool.connect();
+  try {
+    const result = await client.query(
+      `SELECT c.*, aq.aqi, aq.pm25, aq.pm10, aq.updated_at
+       FROM cities c
+       JOIN air_quality_latest aq ON c.id = aq.city_id
+       WHERE c.is_active = TRUE AND aq.aqi IS NOT NULL AND aq.aqi > 0
+       ORDER BY aq.aqi ASC
+       LIMIT $1`,
+      [limit]
+    );
+    return result.rows;
+  } finally {
+    client.release();
+  }
+}
+
+export async function getCountryStats(): Promise<{ country: string; country_slug: string; avg_aqi: number; city_count: number }[]> {
+  const client = await pool.connect();
+  try {
+    const result = await client.query(
+      `SELECT c.country,
+              LOWER(REPLACE(REPLACE(c.country, ' ', '-'), '.', '')) as country_slug,
+              ROUND(AVG(aq.aqi))::int as avg_aqi,
+              COUNT(*)::int as city_count
+       FROM cities c
+       JOIN air_quality_latest aq ON c.id = aq.city_id
+       WHERE c.is_active = TRUE AND aq.aqi IS NOT NULL
+       GROUP BY c.country
+       ORDER BY avg_aqi DESC`
+    );
+    return result.rows;
+  } finally {
+    client.release();
+  }
+}
+
+export async function getCitiesByCountry(country: string): Promise<(City & { aqi: number | null; pm25: number | null; pm10: number | null; updated_at: string | null })[]> {
+  const client = await pool.connect();
+  try {
+    const result = await client.query(
+      `SELECT c.*, aq.aqi, aq.pm25, aq.pm10, aq.updated_at
+       FROM cities c
+       LEFT JOIN air_quality_latest aq ON c.id = aq.city_id
+       WHERE c.is_active = TRUE AND LOWER(REPLACE(REPLACE(c.country, ' ', '-'), '.', '')) = $1
+       ORDER BY aq.aqi DESC NULLS LAST`,
+      [country]
+    );
+    return result.rows;
+  } finally {
+    client.release();
+  }
+}
+
+export async function getAllCountrySlugs(): Promise<string[]> {
+  const client = await pool.connect();
+  try {
+    const result = await client.query(
+      `SELECT DISTINCT LOWER(REPLACE(REPLACE(country, ' ', '-'), '.', '')) as country_slug
+       FROM cities WHERE is_active = TRUE`
+    );
+    return result.rows.map((r) => r.country_slug);
+  } finally {
+    client.release();
+  }
+}
+
 export async function getTopPollutedCities(limit = 10): Promise<(City & { aqi: number; pm25: number | null; pm10: number | null; updated_at: string | null })[]> {
   const client = await pool.connect();
   try {

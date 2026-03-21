@@ -1,16 +1,16 @@
 import { MetadataRoute } from "next";
-import { getAllCitySlugs } from "@/lib/db";
+import { getAllCitySlugs, getAllCountrySlugs } from "@/lib/db";
 import { COMPARE_PAIRS } from "@/lib/compare";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
   let slugs: string[] = [];
+  let countrySlugs: string[] = [];
   try {
     slugs = await getAllCitySlugs();
-  } catch {
-    // DB not available
-  }
+    countrySlugs = await getAllCountrySlugs();
+  } catch {}
 
   const cityPages = slugs.map((slug) => ({
     url: `${baseUrl}/air-quality/${slug}`,
@@ -26,20 +26,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
+  const countryPages = countrySlugs.map((slug) => ({
+    url: `${baseUrl}/air-quality-by-country/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "hourly" as const,
+    priority: 0.7,
+  }));
+
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/top-most-polluted-cities`,
-      lastModified: new Date(),
-      changeFrequency: "hourly",
-      priority: 0.9,
-    },
+    { url: baseUrl, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
+    { url: `${baseUrl}/top-most-polluted-cities`, lastModified: new Date(), changeFrequency: "hourly", priority: 0.9 },
+    { url: `${baseUrl}/best-air-quality-cities`, lastModified: new Date(), changeFrequency: "hourly", priority: 0.9 },
+    { url: `${baseUrl}/air-quality-by-country`, lastModified: new Date(), changeFrequency: "hourly", priority: 0.9 },
     ...cityPages,
     ...comparePages,
+    ...countryPages,
   ];
 }
