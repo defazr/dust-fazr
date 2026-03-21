@@ -6,6 +6,7 @@ import { TickerServer } from "@/components/TickerServer";
 import { StickyHeader } from "@/components/StickyHeader";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ScrollReset } from "@/components/ScrollReset";
+import { VignetteGuard } from "@/components/VignetteGuard";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -73,6 +74,7 @@ export default function RootLayout({
           `}
         </Script>
         <ScrollReset />
+        <VignetteGuard />
         <TickerServer />
         <StickyHeader />
         {children}
