@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { TickerServer } from "@/components/TickerServer";
 import { StickyHeader } from "@/components/StickyHeader";
@@ -47,6 +48,18 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-black text-white">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-3W9P03K820"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-3W9P03K820');
+          `}
+        </Script>
         <ScrollReset />
         <TickerServer />
         <StickyHeader />
