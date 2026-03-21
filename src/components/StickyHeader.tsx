@@ -29,7 +29,7 @@ export function StickyHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 backdrop-blur bg-black/60 border-b border-[#1e1e1e]">
+    <header ref={menuRef} className="sticky top-0 z-40 backdrop-blur bg-black/60 border-b border-[#1e1e1e]">
       <div className="max-w-6xl mx-auto px-4 h-12 flex items-center justify-between">
         <Link
           href="/"
@@ -75,7 +75,6 @@ export function StickyHeader() {
 
       {/* Mobile dropdown menu */}
       <div
-        ref={menuRef}
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
           open ? "max-h-60 border-t border-[#1e1e1e]" : "max-h-0"
         }`}
