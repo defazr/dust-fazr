@@ -6,6 +6,7 @@ import { getAqiInfo } from "@/lib/aqi";
 import { COMPARE_PAIRS, parseCompareSlug, getRelatedComparisons } from "@/lib/compare";
 import { CompareFAQ } from "@/components/FAQ";
 import { AdSlot } from "@/components/AdSlot";
+import { TrackClick } from "@/components/TrackClick";
 
 export const revalidate = 3600;
 
@@ -30,11 +31,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const aqiA = cityA.aqi != null ? `AQI ${cityA.aqi}` : "Live AQI";
   const aqiB = cityB.aqi != null ? `AQI ${cityB.aqi}` : "Live AQI";
+  const hasFullData = cityA.aqi != null && cityB.aqi != null;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
+  const title = hasFullData
+    ? `${cityA.name} vs ${cityB.name} Air Quality (${aqiA} vs ${aqiB}) – Which Is Worse?`
+    : `${cityA.name} vs ${cityB.name} Air Quality – Latest Data & Comparison`;
+
   return {
-    title: `${cityA.name} vs ${cityB.name} Air Quality (${aqiA} vs ${aqiB}) – Which Is Safer? | DUST.FAZR`,
-    description: `${cityA.name} (${aqiA}) vs ${cityB.name} (${aqiB}): Which city has better air quality right now? Live PM2.5 comparison and health guide. Updated hourly.`,
+    title: `${title} | DUST.FAZR`,
+    description: hasFullData
+      ? `${cityA.name} (${aqiA}) vs ${cityB.name} (${aqiB}): Which city has worse air quality right now? Live PM2.5 comparison and health guide. Updated hourly.`
+      : `Compare air quality between ${cityA.name} and ${cityB.name}. Check the latest AQI, PM2.5 levels, and health recommendations. Updated hourly.`,
     keywords: [
       `${cityA.name} vs ${cityB.name} air quality`,
       `${cityA.name} or ${cityB.name} safer`,
@@ -368,14 +376,16 @@ export default async function ComparePage({ params }: PageProps) {
           </section>
         )}
 
-        <section className="text-center py-2">
-          <Link
-            href="/air-quality-today"
-            className="inline-block px-8 py-4 rounded-2xl bg-[#121212] border border-[#1e1e1e] hover:border-zinc-600 hover:bg-[#1a1a1a] transition-all duration-200 cursor-pointer"
-          >
-            <p className="text-sm font-bold text-white">Check air quality in your city →</p>
-          </Link>
-        </section>
+        <TrackClick category="engagement" label="bottom_cta_compare">
+          <section className="text-center py-2">
+            <Link
+              href="/air-quality-today"
+              className="inline-block px-8 py-4 rounded-2xl bg-[#121212] border border-[#1e1e1e] hover:border-zinc-600 hover:bg-[#1a1a1a] transition-all duration-200 cursor-pointer"
+            >
+              <p className="text-sm font-bold text-white">Check air quality in your city →</p>
+            </Link>
+          </section>
+        </TrackClick>
 
         {/* SEO Footer */}
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6">

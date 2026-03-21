@@ -11,6 +11,8 @@ import { TextAnalysis } from "@/components/TextAnalysis";
 import { HistorySection } from "@/components/HistorySection";
 import { NearbyCities } from "@/components/NearbyCities";
 import { CityFAQ } from "@/components/FAQ";
+import { TrackClick } from "@/components/TrackClick";
+import { COMPARE_PAIRS } from "@/lib/compare";
 
 export const revalidate = 3600;
 
@@ -142,6 +144,15 @@ export default async function CityAirQualityPage({ params }: PageProps) {
           updatedAt={aq?.updated_at ?? null}
         />
 
+        <TrackClick category="engagement" label="hero_cta_city">
+          <Link
+            href="/air-quality-today"
+            className="block text-center py-3 text-sm font-semibold text-zinc-500 hover:text-white transition-colors"
+          >
+            Check your city&apos;s air quality →
+          </Link>
+        </TrackClick>
+
         {/* H2: Current Pollution Levels */}
         <section>
           <h2 className="text-xl font-semibold text-white mb-4">
@@ -187,6 +198,31 @@ export default async function CityAirQualityPage({ params }: PageProps) {
 
         <NearbyCities cities={data.nearbyCities} currentCity={data.name} currentSlug={data.slug} />
 
+        {/* Compare with other cities */}
+        {(() => {
+          const cityCompares = COMPARE_PAIRS.filter(
+            (p) => p.slugA === data.slug || p.slugB === data.slug
+          ).slice(0, 4);
+          if (cityCompares.length === 0) return null;
+          return (
+            <section className="rounded-2xl bg-[#121212] border border-[#1e1e1e] p-6 md:p-8 overflow-hidden">
+              <h2 className="text-lg font-bold text-white mb-4">Compare {data.name} With</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {cityCompares.map((c) => (
+                  <TrackClick key={c.slug} category="engagement" label={`compare_click_${c.slug}`}>
+                    <Link
+                      href={`/compare/${c.slug}`}
+                      className="block p-4 rounded-xl border border-[#1e1e1e] bg-black hover:bg-[#0e0e0e] hover:border-zinc-700 transition-all duration-200 cursor-pointer"
+                    >
+                      <p className="text-sm font-semibold text-zinc-300">{c.label} →</p>
+                    </Link>
+                  </TrackClick>
+                ))}
+              </div>
+            </section>
+          );
+        })()}
+
         {/* Internal Links + CTA */}
         <section className="rounded-2xl bg-[#121212] border border-[#1e1e1e] p-6 md:p-8 overflow-hidden">
           <h2 className="text-lg font-bold text-white mb-4">Explore More</h2>
@@ -206,14 +242,16 @@ export default async function CityAirQualityPage({ params }: PageProps) {
           </div>
         </section>
 
-        <section className="text-center py-2">
-          <Link
-            href="/air-quality-today"
-            className="inline-block px-8 py-4 rounded-2xl bg-[#121212] border border-[#1e1e1e] hover:border-zinc-600 hover:bg-[#1a1a1a] transition-all duration-200 cursor-pointer"
-          >
-            <p className="text-sm font-bold text-white">Check air quality in your city →</p>
-          </Link>
-        </section>
+        <TrackClick category="engagement" label="bottom_cta_city">
+          <section className="text-center py-2">
+            <Link
+              href="/air-quality-today"
+              className="inline-block px-8 py-4 rounded-2xl bg-[#121212] border border-[#1e1e1e] hover:border-zinc-600 hover:bg-[#1a1a1a] transition-all duration-200 cursor-pointer"
+            >
+              <p className="text-sm font-bold text-white">Check air quality in your city →</p>
+            </Link>
+          </section>
+        </TrackClick>
 
         {/* SEO footer text */}
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6 mt-8">
