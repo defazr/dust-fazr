@@ -190,7 +190,10 @@ export default async function ComparePage({ params }: PageProps) {
     getCityWithLatest(parsed.slugB),
   ]);
 
-  if (!cityA || !cityB) notFound();
+  if (!cityA || !cityB) {
+    console.warn("Invalid compare pair:", slug, "→ cityA:", parsed.slugA, "cityB:", parsed.slugB);
+    notFound();
+  }
 
   const verdict = getVerdict(cityA.name, cityB.name, cityA.aqi, cityB.aqi);
   const analysis = getAnalysis(cityA.name, cityB.name, cityA, cityB);

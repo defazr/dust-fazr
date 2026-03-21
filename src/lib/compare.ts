@@ -13,12 +13,12 @@ export const COMPARE_PAIRS: ComparePair[] = [
   { slug: "seoul-vs-new-york-air-quality", slugA: "seoul-air-quality", slugB: "new-york-air-quality", label: "Seoul vs New York" },
   { slug: "london-vs-paris-air-quality", slugA: "london-air-quality", slugB: "paris-air-quality", label: "London vs Paris" },
   { slug: "tokyo-vs-london-air-quality", slugA: "tokyo-air-quality", slugB: "london-air-quality", label: "Tokyo vs London" },
-  { slug: "beijing-vs-delhi-air-quality", slugA: "beijing-air-quality", slugB: "delhi-air-quality", label: "Beijing vs Delhi" },
+  { slug: "beijing-vs-new-delhi-air-quality", slugA: "beijing-air-quality", slugB: "new-delhi-air-quality", label: "Beijing vs New Delhi" },
   { slug: "new-york-vs-london-air-quality", slugA: "new-york-air-quality", slugB: "london-air-quality", label: "New York vs London" },
   { slug: "bangkok-vs-jakarta-air-quality", slugA: "bangkok-air-quality", slugB: "jakarta-air-quality", label: "Bangkok vs Jakarta" },
   { slug: "sydney-vs-melbourne-air-quality", slugA: "sydney-air-quality", slugB: "melbourne-air-quality", label: "Sydney vs Melbourne" },
   // Expansion: 20 more high-traffic pairs
-  { slug: "delhi-vs-mumbai-air-quality", slugA: "delhi-air-quality", slugB: "mumbai-air-quality", label: "Delhi vs Mumbai" },
+  { slug: "new-delhi-vs-mumbai-air-quality", slugA: "new-delhi-air-quality", slugB: "mumbai-air-quality", label: "New Delhi vs Mumbai" },
   { slug: "seoul-vs-london-air-quality", slugA: "seoul-air-quality", slugB: "london-air-quality", label: "Seoul vs London" },
   { slug: "tokyo-vs-new-york-air-quality", slugA: "tokyo-air-quality", slugB: "new-york-air-quality", label: "Tokyo vs New York" },
   { slug: "beijing-vs-shanghai-air-quality", slugA: "beijing-air-quality", slugB: "shanghai-air-quality", label: "Beijing vs Shanghai" },
@@ -34,10 +34,10 @@ export const COMPARE_PAIRS: ComparePair[] = [
   { slug: "beijing-vs-new-york-air-quality", slugA: "beijing-air-quality", slugB: "new-york-air-quality", label: "Beijing vs New York" },
   { slug: "seoul-vs-busan-air-quality", slugA: "seoul-air-quality", slugB: "busan-air-quality", label: "Seoul vs Busan" },
   { slug: "mumbai-vs-bangalore-air-quality", slugA: "mumbai-air-quality", slugB: "bangalore-air-quality", label: "Mumbai vs Bangalore" },
-  { slug: "shanghai-vs-hong-kong-air-quality", slugA: "shanghai-air-quality", slugB: "hong-kong-air-quality", label: "Shanghai vs Hong Kong" },
+
   { slug: "los-angeles-vs-san-francisco-air-quality", slugA: "los-angeles-air-quality", slugB: "san-francisco-air-quality", label: "Los Angeles vs San Francisco" },
   { slug: "tokyo-vs-seoul-air-quality", slugA: "tokyo-air-quality", slugB: "seoul-air-quality", label: "Tokyo vs Seoul" },
-  { slug: "delhi-vs-beijing-air-quality", slugA: "delhi-air-quality", slugB: "beijing-air-quality", label: "Delhi vs Beijing" },
+  { slug: "new-delhi-vs-beijing-air-quality", slugA: "new-delhi-air-quality", slugB: "beijing-air-quality", label: "New Delhi vs Beijing" },
 ];
 
 export function parseCompareSlug(slug: string): { slugA: string; slugB: string } | null {
