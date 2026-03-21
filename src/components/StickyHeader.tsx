@@ -6,9 +6,11 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
+  { label: "Today", href: "/air-quality-today" },
   { label: "Ranking", href: "/top-most-polluted-cities" },
   { label: "Cleanest", href: "/best-air-quality-cities" },
   { label: "Countries", href: "/air-quality-by-country" },
+  { label: "AQI Guide", href: "/aqi-scale-explained" },
 ];
 
 export function StickyHeader() {

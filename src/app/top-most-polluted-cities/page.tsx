@@ -323,6 +323,15 @@ export default async function MostPollutedCitiesPage() {
           </div>
         </section>
 
+        <section className="text-center py-2">
+          <Link
+            href="/air-quality-today"
+            className="inline-block px-8 py-4 rounded-2xl bg-[#121212] border border-[#1e1e1e] hover:border-zinc-600 hover:bg-[#1a1a1a] transition-all duration-200 cursor-pointer"
+          >
+            <p className="text-sm font-bold text-white">Check air quality in your city →</p>
+          </Link>
+        </section>
+
         <AdSlot slot="4617195255" />
 
         {/* SEO Footer */}

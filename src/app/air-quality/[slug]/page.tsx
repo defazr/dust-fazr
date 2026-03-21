@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import Link from "next/link";
 import { getCityBySlug, getAllCitySlugs } from "@/lib/db";
 import { getAqiInfo } from "@/lib/aqi";
 import { CityHero } from "@/components/CityHero";
@@ -185,6 +186,34 @@ export default async function CityAirQualityPage({ params }: PageProps) {
         <CityFAQ cityName={data.name} aqi={aq?.aqi ?? null} pm25={aq?.pm25 ?? null} />
 
         <NearbyCities cities={data.nearbyCities} currentCity={data.name} currentSlug={data.slug} />
+
+        {/* Internal Links + CTA */}
+        <section className="rounded-2xl bg-[#121212] border border-[#1e1e1e] p-6 md:p-8 overflow-hidden">
+          <h2 className="text-lg font-bold text-white mb-4">Explore More</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <Link href="/top-most-polluted-cities" className="block p-4 rounded-xl border border-[#1e1e1e] bg-black hover:bg-[#0e0e0e] hover:border-zinc-700 transition-all duration-200 cursor-pointer">
+              <p className="text-sm font-semibold text-zinc-300">Most Polluted Cities →</p>
+            </Link>
+            <Link href="/best-air-quality-cities" className="block p-4 rounded-xl border border-[#1e1e1e] bg-black hover:bg-[#0e0e0e] hover:border-zinc-700 transition-all duration-200 cursor-pointer">
+              <p className="text-sm font-semibold text-zinc-300">Cleanest Cities →</p>
+            </Link>
+            <Link href="/air-quality-by-country" className="block p-4 rounded-xl border border-[#1e1e1e] bg-black hover:bg-[#0e0e0e] hover:border-zinc-700 transition-all duration-200 cursor-pointer">
+              <p className="text-sm font-semibold text-zinc-300">Air Quality by Country →</p>
+            </Link>
+            <Link href="/aqi-scale-explained" className="block p-4 rounded-xl border border-[#1e1e1e] bg-black hover:bg-[#0e0e0e] hover:border-zinc-700 transition-all duration-200 cursor-pointer">
+              <p className="text-sm font-semibold text-zinc-300">AQI Scale Explained →</p>
+            </Link>
+          </div>
+        </section>
+
+        <section className="text-center py-2">
+          <Link
+            href="/air-quality-today"
+            className="inline-block px-8 py-4 rounded-2xl bg-[#121212] border border-[#1e1e1e] hover:border-zinc-600 hover:bg-[#1a1a1a] transition-all duration-200 cursor-pointer"
+          >
+            <p className="text-sm font-bold text-white">Check air quality in your city →</p>
+          </Link>
+        </section>
 
         {/* SEO footer text */}
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6 mt-8">

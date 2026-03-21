@@ -35,6 +35,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
+    { url: `${baseUrl}/air-quality-today`, lastModified: new Date(), changeFrequency: "hourly", priority: 0.95 },
+    { url: `${baseUrl}/aqi-scale-explained`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
     { url: `${baseUrl}/top-most-polluted-cities`, lastModified: new Date(), changeFrequency: "hourly", priority: 0.9 },
     { url: `${baseUrl}/best-air-quality-cities`, lastModified: new Date(), changeFrequency: "hourly", priority: 0.9 },
     { url: `${baseUrl}/air-quality-by-country`, lastModified: new Date(), changeFrequency: "hourly", priority: 0.9 },
