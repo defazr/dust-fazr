@@ -8,7 +8,7 @@ import { AdSlot } from "@/components/AdSlot";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Most Polluted Cities Right Now (Live AQI Ranking) – Should You Stay Indoors? | DUST.FAZR",
+  title: "Most Polluted Cities Right Now (Live AQI Ranking) – Should You Stay Indoors?",
   description:
     "Top 10 most polluted cities in the world right now. Live AQI ranking with PM2.5 data. Find out if your city is on the list. Updated hourly.",
   keywords: [

@@ -7,7 +7,7 @@ export const revalidate = false; // Static page, no revalidation needed
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
 export const metadata: Metadata = {
-  title: "AQI Scale Explained (PM2.5 Levels & Health Effects) – What Do the Numbers Mean? | DUST.FAZR",
+  title: "AQI Scale Explained (PM2.5 Levels & Health Effects) – What Do the Numbers Mean?",
   description:
     "Understand the Air Quality Index (AQI) scale from 0 to 500. Learn what PM2.5 levels mean for your health, when to wear a mask, and when to stay indoors. Complete AQI guide.",
   keywords: [

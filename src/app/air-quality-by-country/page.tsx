@@ -9,7 +9,7 @@ export const revalidate = 3600;
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
 export const metadata: Metadata = {
-  title: "Air Quality by Country (Live AQI Rankings) | DUST.FAZR",
+  title: "Air Quality by Country (Live AQI Rankings)",
   description:
     "Compare air quality across countries worldwide. See average AQI rankings by country with real-time PM2.5 data. Updated hourly.",
   keywords: [

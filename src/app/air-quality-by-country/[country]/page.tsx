@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
   return {
-    title: `${countryName} Air Quality (${avgAqi ? `Avg AQI ${avgAqi}` : "Live Data"}) — ${cities.length} Cities | DUST.FAZR`,
+    title: `${countryName} Air Quality (${avgAqi ? `Avg AQI ${avgAqi}` : "Live Data"}) — ${cities.length} Cities`,
     description: `Air quality in ${countryName}: ${cities.length} cities monitored. ${avgAqi ? `Average AQI ${avgAqi}.` : ""} See city-by-city pollution data with PM2.5 levels. Updated hourly.`,
     keywords: [
       `${countryName} air quality`,

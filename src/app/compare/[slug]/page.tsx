@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     : `${cityA.name} vs ${cityB.name} Air Quality – Latest Data & Comparison`;
 
   return {
-    title: `${title} | DUST.FAZR`,
+    title: title,
     description: hasFullData
       ? `${cityA.name} (${aqiA}) vs ${cityB.name} (${aqiB}): Which city has worse air quality right now? Live PM2.5 comparison and health guide. Updated hourly.`
       : `Compare air quality between ${cityA.name} and ${cityB.name}. Check the latest AQI, PM2.5 levels, and health recommendations. Updated hourly.`,

@@ -10,7 +10,7 @@ export const revalidate = 3600;
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
 export const metadata: Metadata = {
-  title: "Air Quality Today (Live AQI Worldwide) – Is the Air Safe Right Now? | DUST.FAZR",
+  title: "Air Quality Today (Live AQI Worldwide) – Is the Air Safe Right Now?",
   description:
     "Check air quality today for cities worldwide. Live AQI data, PM2.5 levels, and health recommendations. See the most and least polluted cities right now. Updated hourly.",
   keywords: [

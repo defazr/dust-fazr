@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
   return {
-    title: `Why Is Air Quality Bad in ${data.name}? (${aqiText}) – Causes & Solutions | DUST.FAZR`,
+    title: `Why Is Air Quality Bad in ${data.name}? (${aqiText}) – Causes & Solutions`,
     description: `${data.name} air pollution causes explained. Current ${aqiText}. Learn why air quality is bad, major pollution sources, and what you can do to protect yourself. Updated hourly.`,
     keywords: [
       `why is air quality bad in ${data.name}`,

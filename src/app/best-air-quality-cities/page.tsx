@@ -9,7 +9,7 @@ export const revalidate = 3600;
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
 export const metadata: Metadata = {
-  title: "Cleanest Cities Right Now (Best Air Quality) – Where Is the Air Safest? | DUST.FAZR",
+  title: "Cleanest Cities Right Now (Best Air Quality) – Where Is the Air Safest?",
   description:
     "Top 10 cities with the cleanest air right now. Find out where the air is safest to breathe today. Live AQI ranking updated hourly.",
   keywords: [

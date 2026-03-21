@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
   return {
-    title: `Should I Wear a Mask in ${data.name} Today? (${aqiText}) – N95 Guide | DUST.FAZR`,
+    title: `Should I Wear a Mask in ${data.name} Today? (${aqiText}) – N95 Guide`,
     description: `${data.name} ${aqiText}: Do you need a mask today? When to wear N95 masks, which masks work against PM2.5, and current pollution levels. Updated hourly.`,
     keywords: [
       `should I wear mask ${data.name}`,

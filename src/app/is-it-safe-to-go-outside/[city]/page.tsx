@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
   return {
-    title: `Is It Safe to Go Outside in ${data.name} Today? (${aqiText}) | DUST.FAZR`,
+    title: `Is It Safe to Go Outside in ${data.name} Today? (${aqiText})`,
     description: `${data.name} air quality is ${level} today (${aqiText}). Find out if it's safe to go outside, exercise, or take children outdoors. Health guide with PM2.5 data. Updated hourly.`,
     keywords: [
       `is it safe to go outside ${data.name}`,

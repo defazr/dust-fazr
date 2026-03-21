@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
   return {
-    title: `${data.name} Air Quality Today (${aqiText}) – Is It Safe Right Now? PM2.5 Guide | DUST.FAZR`,
+    title: `${data.name} Air Quality Today (${aqiText}) – Is It Safe Right Now? PM2.5 Guide`,
     description: `Live AQI in ${data.name} is ${aqiText} (${level}).${pm25Text} Check PM2.5 levels, health effects, and whether it's safe to go outside today. Updated hourly.`,
     keywords: [
       `${data.name} air quality`,
