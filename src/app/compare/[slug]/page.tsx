@@ -62,6 +62,7 @@ function CompareCard({
   city: { name: string; country: string; aqi: number | null; pm25: number | null; pm10: number | null; slug: string };
   label: "A" | "B";
 }) {
+  const hasData = city.aqi != null;
   const info = getAqiInfo(city.aqi);
   return (
     <div className="flex-1 rounded-2xl bg-[#121212] border border-[#1e1e1e] p-6 md:p-8 overflow-hidden">
@@ -73,18 +74,34 @@ function CompareCard({
       </Link>
       <p className="text-xs text-zinc-600 mt-1">{city.country}</p>
 
-      <p
-        className="text-5xl md:text-7xl font-black mt-6 tracking-tight"
-        style={{ color: info.color }}
-      >
-        {city.aqi ?? "—"}
-      </p>
-      <p
-        className="text-sm font-semibold mt-2"
-        style={{ color: info.color }}
-      >
-        {info.label}
-      </p>
+      {hasData ? (
+        <>
+          <p
+            className="text-5xl md:text-7xl font-black mt-6 tracking-tight"
+            style={{ color: info.color }}
+          >
+            {city.aqi}
+          </p>
+          <p
+            className="text-sm font-semibold mt-2"
+            style={{ color: info.color }}
+          >
+            {info.label}
+          </p>
+        </>
+      ) : (
+        <>
+          <p className="text-5xl md:text-7xl font-black mt-6 tracking-tight text-zinc-700">
+            —
+          </p>
+          <p className="text-sm font-semibold mt-2 text-zinc-600">
+            No recent data
+          </p>
+          <p className="text-xs text-zinc-700 mt-1">
+            Data may not be reported at this time
+          </p>
+        </>
+      )}
 
       <div className="mt-6 space-y-3">
         <div className="flex justify-between text-sm">
@@ -195,6 +212,11 @@ export default async function ComparePage({ params }: PageProps) {
     notFound();
   }
 
+  const hasCityA = cityA.aqi != null;
+  const hasCityB = cityB.aqi != null;
+  const hasFullData = hasCityA && hasCityB;
+  const hasNoData = !hasCityA && !hasCityB;
+
   const verdict = getVerdict(cityA.name, cityB.name, cityA.aqi, cityB.aqi);
   const analysis = getAnalysis(cityA.name, cityB.name, cityA, cityB);
   const related = getRelatedComparisons(slug);
@@ -207,6 +229,7 @@ export default async function ComparePage({ params }: PageProps) {
     name: `${cityA.name} vs ${cityB.name} Air Quality Comparison`,
     description: `Compare air quality between ${cityA.name} and ${cityB.name}`,
     url: `${baseUrl}/compare/${slug}`,
+    ...((!hasFullData) && { additionalProperty: { "@type": "PropertyValue", name: "dataAvailability", value: hasNoData ? "none" : "partial" } }),
   };
 
   const breadcrumbSchema = {
@@ -237,7 +260,7 @@ export default async function ComparePage({ params }: PageProps) {
             {cityA.name} vs {cityB.name}
           </h1>
           <p className="text-lg text-zinc-500 font-medium">
-            Live AQI Comparison
+            {hasFullData ? "Live AQI Comparison" : "Air Quality Comparison (limited data available)"}
           </p>
           {latestUpdate && (
             <p className="text-xs text-zinc-600">
@@ -245,6 +268,32 @@ export default async function ComparePage({ params }: PageProps) {
             </p>
           )}
         </section>
+
+        {/* No Data Warning */}
+        {!hasFullData && (
+          <section className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-5">
+            <p className="text-sm text-zinc-400">
+              {hasNoData
+                ? `No recent air quality data available for ${cityA.name} or ${cityB.name}. Data is updated hourly — check back soon.`
+                : `No recent air quality data available for ${!hasCityA ? cityA.name : cityB.name}. ${hasCityA ? cityA.name : cityB.name} data is shown below.`}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {hasCityA && (
+                <Link href={`/air-quality/${cityA.slug}`} className="text-sm font-semibold text-white hover:text-zinc-300 transition-colors">
+                  View {cityA.name} full report →
+                </Link>
+              )}
+              {hasCityB && (
+                <Link href={`/air-quality/${cityB.slug}`} className="text-sm font-semibold text-white hover:text-zinc-300 transition-colors">
+                  View {cityB.name} full report →
+                </Link>
+              )}
+              <Link href="/air-quality-today" className="text-sm font-semibold text-zinc-400 hover:text-zinc-300 transition-colors">
+                Explore other cities →
+              </Link>
+            </div>
+          </section>
+        )}
 
         <AdSlot slot="4286289660" />
 
