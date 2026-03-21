@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getCityWithLatest } from "@/lib/db";
 import { getAqiInfo } from "@/lib/aqi";
 import { COMPARE_PAIRS, parseCompareSlug, getRelatedComparisons } from "@/lib/compare";
+import { CompareFAQ } from "@/components/FAQ";
 
 export const revalidate = 3600;
 
@@ -31,18 +32,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
   return {
-    title: `${cityA.name} vs ${cityB.name} Air Quality Comparison (${aqiA} vs ${aqiB}) | DUST.FAZR`,
-    description: `Compare air quality between ${cityA.name} (${aqiA}) and ${cityB.name} (${aqiB}). Live PM2.5, PM10 comparison with health recommendations. Updated hourly.`,
+    title: `${cityA.name} vs ${cityB.name} Air Quality (${aqiA} vs ${aqiB}) – Which Is Safer? | DUST.FAZR`,
+    description: `${cityA.name} (${aqiA}) vs ${cityB.name} (${aqiB}): Which city has better air quality right now? Live PM2.5 comparison and health guide. Updated hourly.`,
     keywords: [
       `${cityA.name} vs ${cityB.name} air quality`,
+      `${cityA.name} or ${cityB.name} safer`,
       `${cityA.name} air quality comparison`,
       `${cityB.name} air quality comparison`,
       "AQI comparison",
-      "PM2.5 comparison",
     ],
     openGraph: {
-      title: `${cityA.name} vs ${cityB.name} Air Quality | DUST.FAZR`,
-      description: `Live air quality comparison: ${cityA.name} ${aqiA} vs ${cityB.name} ${aqiB}`,
+      title: `${cityA.name} vs ${cityB.name} – Which Has Better Air? | DUST.FAZR`,
+      description: `Live comparison: ${cityA.name} ${aqiA} vs ${cityB.name} ${aqiB}. Find out which city is safer.`,
       url: `${baseUrl}/compare/${slug}`,
       siteName: "DUST.FAZR",
       type: "website",
@@ -285,6 +286,8 @@ export default async function ComparePage({ params }: PageProps) {
             <p className="text-lg font-bold text-white mt-1">{cityB.name} Air Quality →</p>
           </Link>
         </section>
+
+        <CompareFAQ cityA={cityA.name} cityB={cityB.name} aqiA={cityA.aqi} aqiB={cityB.aqi} />
 
         {/* Related Comparisons */}
         {related.length > 0 && (

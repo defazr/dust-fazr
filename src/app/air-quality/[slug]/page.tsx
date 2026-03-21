@@ -9,6 +9,7 @@ import { AQIChart } from "@/components/AQIChart";
 import { TextAnalysis } from "@/components/TextAnalysis";
 import { HistorySection } from "@/components/HistorySection";
 import { NearbyCities } from "@/components/NearbyCities";
+import { CityFAQ } from "@/components/FAQ";
 
 export const revalidate = 3600;
 
@@ -26,32 +27,32 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const pm25Text = aq?.pm25 !== null && aq?.pm25 !== undefined ? ` PM2.5: ${aq.pm25} µg/m³.` : "";
   const level = aq?.aqi ? getAqiInfo(aq.aqi).label : "Real-time";
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.com";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
   return {
-    title: `${data.name} Air Quality Today (${aqiText}) - PM2.5 & Pollution | DUST.FAZR`,
-    description: `${data.name}, ${data.country} air quality is ${level.toLowerCase()} today.${pm25Text} Check real-time AQI, PM2.5, PM10 levels and health recommendations. Updated hourly.`,
+    title: `${data.name} Air Quality Today (${aqiText}) – Is It Safe Right Now? PM2.5 Guide | DUST.FAZR`,
+    description: `Live AQI in ${data.name} is ${aqiText} (${level}).${pm25Text} Check PM2.5 levels, health effects, and whether it's safe to go outside today. Updated hourly.`,
     keywords: [
       `${data.name} air quality`,
       `${data.name} AQI`,
       `${data.name} PM2.5`,
       `${data.name} pollution`,
-      `${data.name} air quality index`,
+      `${data.name} air quality today`,
+      `is ${data.name} air safe`,
       `air quality ${data.country}`,
-      "air quality today",
       "PM2.5 levels",
     ],
     openGraph: {
-      title: `${data.name} Air Quality Index - ${aqiText} | DUST.FAZR`,
-      description: `Real-time air quality in ${data.name}: ${level}.${pm25Text} Check AQI, PM2.5 and pollution data.`,
+      title: `${data.name} Air Quality (${aqiText}) – Safe to Go Outside? | DUST.FAZR`,
+      description: `Live AQI in ${data.name}: ${level}.${pm25Text} Real-time PM2.5 data and health guide.`,
       url: `${baseUrl}/air-quality/${slug}`,
       siteName: "DUST.FAZR",
       type: "website",
     },
     twitter: {
       card: "summary",
-      title: `${data.name} Air Quality - ${aqiText}`,
-      description: `${data.name} air quality is ${level.toLowerCase()} today.${pm25Text}`,
+      title: `${data.name} Air Quality (${aqiText}) – Safe Right Now?`,
+      description: `${data.name} air quality is ${level.toLowerCase()} today.${pm25Text} Check health guide.`,
     },
     alternates: {
       canonical: `${baseUrl}/air-quality/${slug}`,
@@ -178,6 +179,8 @@ export default async function CityAirQualityPage({ params }: PageProps) {
           </h2>
           <HistorySection history={data.history} />
         </section>
+
+        <CityFAQ cityName={data.name} aqi={aq?.aqi ?? null} pm25={aq?.pm25 ?? null} />
 
         <NearbyCities cities={data.nearbyCities} currentCity={data.name} currentSlug={data.slug} />
 
