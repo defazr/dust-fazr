@@ -3,13 +3,14 @@ import Link from "next/link";
 import { getTopPollutedCities } from "@/lib/db";
 import { getAqiInfo } from "@/lib/aqi";
 import { makeCompareSlug } from "@/lib/compare";
+import { AdSlot } from "@/components/AdSlot";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Most Polluted Cities Today (Live AQI Ranking) | DUST.FAZR",
+  title: "Most Polluted Cities Right Now (Live AQI Ranking) – Should You Stay Indoors? | DUST.FAZR",
   description:
-    "See the top 10 most polluted cities in the world right now. Live AQI ranking based on real-time PM2.5 data from OpenAQ. Updated hourly.",
+    "Top 10 most polluted cities in the world right now. Live AQI ranking with PM2.5 data. Find out if your city is on the list. Updated hourly.",
   keywords: [
     "most polluted cities",
     "worst air quality",
@@ -193,6 +194,8 @@ export default async function MostPollutedCitiesPage() {
           )}
         </section>
 
+        <AdSlot slot="4286289660" />
+
         {/* TOP 10 List */}
         {cities.length === 0 ? (
           <p className="text-center text-zinc-700 py-12">
@@ -258,6 +261,8 @@ export default async function MostPollutedCitiesPage() {
           </section>
         )}
 
+        <AdSlot slot="1237454490" />
+
         {/* Analysis */}
         {analysis.length > 0 && (
           <section>
@@ -317,6 +322,8 @@ export default async function MostPollutedCitiesPage() {
             </Link>
           </div>
         </section>
+
+        <AdSlot slot="4617195255" />
 
         {/* SEO Footer */}
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6">

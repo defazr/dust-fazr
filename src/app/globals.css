@@ -73,6 +73,11 @@ html.light .shadow-black\/40 { --tw-shadow-color: rgba(0,0,0,0.1) !important; }
 html.light .bg-zinc-900 { background-color: #e5e5e5 !important; }
 html.light .bg-black\/80 { background-color: rgba(245, 245, 245, 0.9) !important; }
 
+/* AdSense spacing */
+.adsbygoogle {
+  margin: 24px 0;
+}
+
 /* Ticker animation */
 @keyframes ticker-scroll {
   0% { transform: translateX(0); }

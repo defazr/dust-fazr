@@ -2,15 +2,16 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCleanestCities } from "@/lib/db";
 import { getAqiInfo } from "@/lib/aqi";
+import { AdSlot } from "@/components/AdSlot";
 
 export const revalidate = 3600;
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
 export const metadata: Metadata = {
-  title: "Cleanest Cities Today (Best Air Quality Ranking) | DUST.FAZR",
+  title: "Cleanest Cities Right Now (Best Air Quality) – Where Is the Air Safest? | DUST.FAZR",
   description:
-    "Top 10 cities with the best air quality right now. Live AQI ranking of the cleanest cities worldwide. Updated hourly with real-time PM2.5 data.",
+    "Top 10 cities with the cleanest air right now. Find out where the air is safest to breathe today. Live AQI ranking updated hourly.",
   keywords: [
     "best air quality cities",
     "cleanest cities",
@@ -91,6 +92,8 @@ export default async function BestAirQualityCitiesPage() {
           )}
         </section>
 
+        <AdSlot slot="4286289660" />
+
         {cities.length === 0 ? (
           <p className="text-center text-zinc-700 py-12">Ranking data is being updated.</p>
         ) : (
@@ -126,6 +129,8 @@ export default async function BestAirQualityCitiesPage() {
           </section>
         )}
 
+        <AdSlot slot="1237454490" />
+
         <section>
           <h2 className="text-xl font-semibold text-white mb-4">About Clean Air Cities</h2>
           <div className="space-y-4">
@@ -159,6 +164,8 @@ export default async function BestAirQualityCitiesPage() {
             </Link>
           </div>
         </section>
+
+        <AdSlot slot="4617195255" />
 
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6">
           <p>

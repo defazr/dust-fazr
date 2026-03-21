@@ -153,7 +153,7 @@ export default async function CityAirQualityPage({ params }: PageProps) {
           />
         </section>
 
-        <AdSlot />
+        <AdSlot slot="4286289660" />
 
         {/* H2: 24-Hour Trend */}
         <section>
@@ -170,7 +170,7 @@ export default async function CityAirQualityPage({ params }: PageProps) {
           history={data.history}
         />
 
-        <AdSlot />
+        <AdSlot slot="1237454490" />
 
         {/* H2: Historical Data */}
         <section>
@@ -179,6 +179,8 @@ export default async function CityAirQualityPage({ params }: PageProps) {
           </h2>
           <HistorySection history={data.history} />
         </section>
+
+        <AdSlot slot="4617195255" />
 
         <CityFAQ cityName={data.name} aqi={aq?.aqi ?? null} pm25={aq?.pm25 ?? null} />
 

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCountryStats } from "@/lib/db";
 import { getAqiInfo } from "@/lib/aqi";
+import { AdSlot } from "@/components/AdSlot";
 
 export const revalidate = 3600;
 
@@ -78,6 +79,8 @@ export default async function AirQualityByCountryPage() {
           </p>
         </section>
 
+        <AdSlot slot="4286289660" />
+
         {countries.length === 0 ? (
           <p className="text-center text-zinc-700 py-12">Country data is being updated.</p>
         ) : (
@@ -115,6 +118,8 @@ export default async function AirQualityByCountryPage() {
           </section>
         )}
 
+        <AdSlot slot="1237454490" />
+
         <section>
           <h2 className="text-xl font-semibold text-white mb-4">Understanding Country Air Quality</h2>
           <div className="space-y-4">
@@ -142,6 +147,8 @@ export default async function AirQualityByCountryPage() {
             </Link>
           </div>
         </section>
+
+        <AdSlot slot="4617195255" />
 
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6">
           <p>

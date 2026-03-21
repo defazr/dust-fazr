@@ -5,6 +5,7 @@ import { getCityWithLatest } from "@/lib/db";
 import { getAqiInfo } from "@/lib/aqi";
 import { COMPARE_PAIRS, parseCompareSlug, getRelatedComparisons } from "@/lib/compare";
 import { CompareFAQ } from "@/components/FAQ";
+import { AdSlot } from "@/components/AdSlot";
 
 export const revalidate = 3600;
 
@@ -242,6 +243,8 @@ export default async function ComparePage({ params }: PageProps) {
           )}
         </section>
 
+        <AdSlot slot="4286289660" />
+
         {/* Compare Cards */}
         <section className="flex flex-col md:flex-row gap-4 md:gap-6">
           <CompareCard city={cityA} label="A" />
@@ -256,6 +259,8 @@ export default async function ComparePage({ params }: PageProps) {
           <h2 className="text-lg font-bold text-white mb-3">Verdict</h2>
           <p className="text-sm text-zinc-300 leading-relaxed">{verdict}</p>
         </section>
+
+        <AdSlot slot="1237454490" />
 
         {/* Analysis */}
         <section>
@@ -288,6 +293,8 @@ export default async function ComparePage({ params }: PageProps) {
         </section>
 
         <CompareFAQ cityA={cityA.name} cityB={cityB.name} aqiA={cityA.aqi} aqiB={cityB.aqi} />
+
+        <AdSlot slot="4617195255" />
 
         {/* Related Comparisons */}
         {related.length > 0 && (
