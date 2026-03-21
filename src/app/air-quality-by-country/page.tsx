@@ -104,11 +104,11 @@ export default async function AirQualityByCountryPage() {
                       {c.city_count} {c.city_count === 1 ? "city" : "cities"} monitored
                     </p>
                   </div>
-                  <div className="text-right shrink-0">
+                  <div className="text-right shrink-0 max-w-[120px] sm:max-w-none">
                     <p className="text-3xl font-black tracking-tight" style={{ color: info.color }}>
                       {c.avg_aqi}
                     </p>
-                    <p className="text-[11px] font-semibold mt-1" style={{ color: info.color }}>
+                    <p className="text-[11px] font-semibold mt-1 leading-tight" style={{ color: info.color }}>
                       Avg AQI · {info.label}
                     </p>
                   </div>

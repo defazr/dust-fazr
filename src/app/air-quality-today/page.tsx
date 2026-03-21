@@ -125,9 +125,9 @@ export default async function AirQualityTodayPage() {
                       <p className="font-bold text-sm text-white truncate">{city.name}</p>
                       <p className="text-[11px] text-zinc-600">{city.country}</p>
                     </div>
-                    <div className="text-right shrink-0">
+                    <div className="text-right shrink-0 max-w-[100px] sm:max-w-none">
                       <p className="text-2xl font-black tracking-tight" style={{ color: info.color }}>{city.aqi}</p>
-                      <p className="text-[10px] font-semibold" style={{ color: info.color }}>{info.label}</p>
+                      <p className="text-[10px] font-semibold leading-tight" style={{ color: info.color }}>{info.label}</p>
                     </div>
                   </Link>
                 );
@@ -163,9 +163,9 @@ export default async function AirQualityTodayPage() {
                       <p className="font-bold text-sm text-white truncate">{city.name}</p>
                       <p className="text-[11px] text-zinc-600">{city.country}</p>
                     </div>
-                    <div className="text-right shrink-0">
+                    <div className="text-right shrink-0 max-w-[100px] sm:max-w-none">
                       <p className="text-2xl font-black tracking-tight" style={{ color: info.color }}>{city.aqi}</p>
-                      <p className="text-[10px] font-semibold" style={{ color: info.color }}>{info.label}</p>
+                      <p className="text-[10px] font-semibold leading-tight" style={{ color: info.color }}>{info.label}</p>
                     </div>
                   </Link>
                 );

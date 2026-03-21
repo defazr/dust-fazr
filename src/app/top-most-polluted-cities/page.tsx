@@ -228,7 +228,7 @@ export default async function MostPollutedCitiesPage() {
                     </div>
 
                     {/* AQI + Status */}
-                    <div className="text-right shrink-0">
+                    <div className="text-right shrink-0 max-w-[120px] sm:max-w-none">
                       <p
                         className="text-3xl md:text-4xl font-black tracking-tight"
                         style={{ color: info.color }}
@@ -236,7 +236,7 @@ export default async function MostPollutedCitiesPage() {
                         {city.aqi}
                       </p>
                       <p
-                        className="text-[11px] font-semibold mt-1"
+                        className="text-[11px] font-semibold mt-1 leading-tight"
                         style={{ color: info.color }}
                       >
                         {info.label}

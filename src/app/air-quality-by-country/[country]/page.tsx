@@ -151,11 +151,11 @@ export default async function CountryPage({ params }: PageProps) {
                       <p className="text-xs text-zinc-600 mt-0.5">PM2.5: {city.pm25} µg/m³</p>
                     )}
                   </div>
-                  <div className="text-right shrink-0">
+                  <div className="text-right shrink-0 max-w-[120px] sm:max-w-none">
                     <p className="text-3xl font-black tracking-tight" style={{ color: info.color }}>
                       {city.aqi ?? "—"}
                     </p>
-                    <p className="text-[11px] font-semibold mt-1" style={{ color: info.color }}>
+                    <p className="text-[11px] font-semibold mt-1 leading-tight" style={{ color: info.color }}>
                       {info.label}
                     </p>
                   </div>
