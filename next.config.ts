@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: "/compare/delhi-vs-mumbai-air-quality",
+        destination: "/compare/new-delhi-vs-mumbai-air-quality",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
