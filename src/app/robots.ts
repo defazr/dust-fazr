@@ -1,13 +1,13 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.com";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
   return {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
-        disallow: ["/_next/static/", "/favicon.ico"],
+        allow: ["/", "/_next/static/"],
+        disallow: ["/api/"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
