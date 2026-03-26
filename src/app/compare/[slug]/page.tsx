@@ -56,6 +56,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${baseUrl}/compare/${slug}`,
       siteName: "DUST.FAZR",
       type: "website",
+      images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: `${cityA.name} vs ${cityB.name} Air Quality` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${cityA.name} vs ${cityB.name} – Which Has Better Air?`,
+      description: `Live comparison: ${cityA.name} ${aqiA} vs ${cityB.name} ${aqiB}. Find out which city is safer.`,
+      images: ["/og-default.jpg"],
     },
     alternates: {
       canonical: `${baseUrl}/compare/${slug}`,

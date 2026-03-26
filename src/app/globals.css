@@ -66,15 +66,17 @@ html.light .bg-black { background-color: var(--background) !important; }
 html.light .bg-black\/60 { background-color: rgba(245, 245, 245, 0.8) !important; }
 html.light .border-\[\#1e1e1e\] { border-color: var(--card-border) !important; }
 html.light .text-white { color: var(--foreground) !important; }
-html.light .text-neutral-300 { color: #404040 !important; }
 html.light .text-neutral-200 { color: #262626 !important; }
+html.light .text-neutral-300 { color: #404040 !important; }
+html.light .text-neutral-400 { color: #525252 !important; }
 html.light .text-neutral-500 { color: #737373 !important; }
 html.light .text-neutral-600 { color: #525252 !important; }
-html.light .text-neutral-700 { color: #a3a3a3 !important; }
-html.light .text-zinc-400 { color: #525252 !important; }
-html.light .text-zinc-500 { color: #737373 !important; }
-html.light .text-zinc-600 { color: #a3a3a3 !important; }
-html.light .text-zinc-700 { color: #d4d4d8 !important; }
+html.light .text-neutral-700 { color: #404040 !important; }
+html.light .text-zinc-300 { color: #3f3f46 !important; }
+html.light .text-zinc-400 { color: #52525b !important; }
+html.light .text-zinc-500 { color: #71717a !important; }
+html.light .text-zinc-600 { color: #52525b !important; }
+html.light .text-zinc-700 { color: #3f3f46 !important; }
 html.light .placeholder-zinc-600::placeholder { color: #a3a3a3 !important; }
 html.light .bg-zinc-800 { background-color: #e5e5e5 !important; }
 html.light .hover\:bg-zinc-700:hover { background-color: #d4d4d4 !important; }

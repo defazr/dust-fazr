@@ -38,7 +38,6 @@ export const COMPARE_PAIRS: ComparePair[] = [
   { slug: "los-angeles-vs-san-francisco-air-quality", slugA: "los-angeles-air-quality", slugB: "san-francisco-air-quality", label: "Los Angeles vs San Francisco" },
   { slug: "tokyo-vs-seoul-air-quality", slugA: "tokyo-air-quality", slugB: "seoul-air-quality", label: "Tokyo vs Seoul" },
   { slug: "new-delhi-vs-beijing-air-quality", slugA: "new-delhi-air-quality", slugB: "beijing-air-quality", label: "New Delhi vs Beijing" },
-  { slug: "shanghai-vs-hong-kong-air-quality", slugA: "shanghai-air-quality", slugB: "hong-kong-air-quality", label: "Shanghai vs Hong Kong" },
 ];
 
 export function parseCompareSlug(slug: string): { slugA: string; slugB: string } | null {

@@ -51,11 +51,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${baseUrl}/air-quality/${slug}`,
       siteName: "DUST.FAZR",
       type: "website",
+      images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: `${data.name} Air Quality` }],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: `${data.name} Air Quality (${aqiText}) – Safe Right Now?`,
       description: `${data.name} air quality is ${level.toLowerCase()} today.${pm25Text} Check health guide.`,
+      images: ["/og-default.jpg"],
     },
     alternates: {
       canonical: `${baseUrl}/air-quality/${slug}`,
