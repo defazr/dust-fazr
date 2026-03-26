@@ -35,6 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: "DUST.FAZR",
     type: "website",
+    url: "https://dust.fazr.co.kr",
     images: [
       {
         url: "/og-default.jpg",
