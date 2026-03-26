@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 
+let vignetteWasActive = false;
+
 function resetBodyStyles() {
   document.body.style.top = "";
   document.body.style.position = "";
@@ -30,6 +32,11 @@ function fullReset() {
   resetBodyStyles();
   resetViewport();
   forceReflow();
+  // Only scroll to top if vignette was actually active
+  if (vignetteWasActive) {
+    window.scrollTo(0, 0);
+    vignetteWasActive = false;
+  }
 }
 
 export function VignetteGuard() {
@@ -44,13 +51,17 @@ export function VignetteGuard() {
     };
   }, []);
 
-  // MutationObserver: reset after vignette closes
+  // MutationObserver: detect vignette open/close
   useEffect(() => {
     const observer = new MutationObserver(() => {
       const hasVignette = document.querySelector('iframe[id*="google_ads"]');
-      if (!hasVignette) {
+      if (hasVignette) {
+        vignetteWasActive = true;
+      } else if (vignetteWasActive) {
         resetBodyStyles();
         resetViewport();
+        window.scrollTo(0, 0);
+        vignetteWasActive = false;
       }
     });
 
