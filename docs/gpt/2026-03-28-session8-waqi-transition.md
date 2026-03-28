@@ -111,11 +111,32 @@ DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://dust@localhost:5432/
 
 ---
 
+## SC Performance 분석 (첫 번째 데이터)
+
+- 기간: 2026-03-20 ~ 03-26 (7일)
+- 총 클릭 3, 노출 170, CTR 1.76%
+- 한국에서만 클릭 발생 (3건)
+- 허브 페이지 4개 순위 4~8위인데 클릭 0 → Title 문제
+
+### CTR 최적화 1차 — 4개 허브 페이지 Title/Description 수정
+
+| 페이지 | Before Title | After Title |
+|--------|-------------|-------------|
+| /air-quality-today | Air Quality Today (Live AQI Worldwide) – Is the Air Safe Right Now? | Air Quality Today (Real-Time AQI & PM2.5 Worldwide) |
+| /top-most-polluted-cities | Most Polluted Cities Right Now (Live AQI Ranking) – Should You Stay Indoors? | Most Polluted Cities in the World (Live AQI Ranking) |
+| /best-air-quality-cities | Cleanest Cities Right Now (Best Air Quality) – Where Is the Air Safest? | Cities with the Best Air Quality (Live AQI Ranking) |
+| /air-quality-by-country | Air Quality by Country (Live AQI Rankings) | Air Quality by Country (Live AQI Map & Rankings) |
+
+커밋: 8ed139f
+
+---
+
 ## 다음 단계
 
-1. SC 데이터 수집 → CTR 최적화 진입
-2. 색인 리스트 v3 재구성 (WAQI 커버리지 증가로 더 많은 도시 색인 가능)
-3. CTR 낮은 페이지 Title/Description 수정
-4. 비교 페이지 데이터 재평가 (기존 제외 11개 중 복구 가능한 것 확인)
+1. ✅ ~~SC 데이터 수집 → CTR 최적화 진입~~ (완료)
+2. 2~3일 후 SC 재확인 → CTR 변화 모니터링
+3. 도시 페이지 순위 개선 (도쿄/시드니/상하이 30~50위 → 콘텐츠 보강)
+4. 색인 리스트 v3 재구성 (WAQI 커버리지 기준)
+5. 비교 페이지 데이터 재평가
 
-**핵심:** API 장애를 업그레이드 기회로 전환 완료. 이제 성과 단계.
+**핵심:** API 장애를 업그레이드 기회로 전환 완료. CTR 최적화 시작.
