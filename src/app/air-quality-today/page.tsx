@@ -10,9 +10,9 @@ export const revalidate = 3600;
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
 export const metadata: Metadata = {
-  title: "Air Quality Today (Live AQI Worldwide) – Is the Air Safe Right Now?",
+  title: "Air Quality Today (Real-Time AQI & PM2.5 Worldwide)",
   description:
-    "Check air quality today for cities worldwide. Live AQI data, PM2.5 levels, and health recommendations. See the most and least polluted cities right now. Updated hourly.",
+    "Check real-time air quality today for major cities worldwide. Live AQI and PM2.5 data updated hourly with health recommendations.",
   keywords: [
     "air quality today",
     "air quality index today",
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     "live AQI",
   ],
   openGraph: {
-    title: "Air Quality Today — Live AQI Worldwide | DUST.FAZR",
-    description: "Real-time air quality data for cities worldwide. Check if the air is safe right now.",
+    title: "Air Quality Today (Real-Time AQI & PM2.5 Worldwide) | DUST.FAZR",
+    description: "Check real-time air quality today for major cities worldwide. Live AQI and PM2.5 data updated hourly with health recommendations.",
     url: `${baseUrl}/air-quality-today`,
     siteName: "DUST.FAZR",
     type: "website",

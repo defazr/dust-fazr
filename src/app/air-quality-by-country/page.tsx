@@ -9,9 +9,9 @@ export const revalidate = 3600;
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
 export const metadata: Metadata = {
-  title: "Air Quality by Country (Live AQI Rankings)",
+  title: "Air Quality by Country (Live AQI Map & Rankings)",
   description:
-    "Compare air quality across countries worldwide. See average AQI rankings by country with real-time PM2.5 data. Updated hourly.",
+    "Explore air quality by country with real-time AQI data. Compare pollution levels and PM2.5 across countries worldwide.",
   keywords: [
     "air quality by country",
     "country air pollution ranking",
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     "pollution by country",
   ],
   openGraph: {
-    title: "Air Quality by Country — Live AQI Rankings | DUST.FAZR",
-    description: "Compare air pollution levels across countries with real-time data.",
+    title: "Air Quality by Country (Live AQI Map & Rankings) | DUST.FAZR",
+    description: "Explore air quality by country with real-time AQI data. Compare pollution levels and PM2.5 across countries worldwide.",
     url: `${baseUrl}/air-quality-by-country`,
     siteName: "DUST.FAZR",
     type: "website",

@@ -9,9 +9,9 @@ export const revalidate = 3600;
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
 export const metadata: Metadata = {
-  title: "Cleanest Cities Right Now (Best Air Quality) – Where Is the Air Safest?",
+  title: "Cities with the Best Air Quality (Live AQI Ranking)",
   description:
-    "Top 10 cities with the cleanest air right now. Find out where the air is safest to breathe today. Live AQI ranking updated hourly.",
+    "Discover cities with the cleanest air quality worldwide. Live AQI rankings with PM2.5 levels updated hourly.",
   keywords: [
     "best air quality cities",
     "cleanest cities",
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     "clean air cities ranking",
   ],
   openGraph: {
-    title: "Cleanest Cities Today — Best Air Quality Ranking | DUST.FAZR",
-    description: "Real-time ranking of cities with the cleanest air worldwide.",
+    title: "Cities with the Best Air Quality (Live AQI Ranking) | DUST.FAZR",
+    description: "Discover cities with the cleanest air quality worldwide. Live AQI rankings with PM2.5 levels updated hourly.",
     url: `${baseUrl}/best-air-quality-cities`,
     siteName: "DUST.FAZR",
     type: "website",

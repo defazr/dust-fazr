@@ -8,9 +8,9 @@ import { AdSlot } from "@/components/AdSlot";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Most Polluted Cities Right Now (Live AQI Ranking) – Should You Stay Indoors?",
+  title: "Most Polluted Cities in the World (Live AQI Ranking)",
   description:
-    "Top 10 most polluted cities in the world right now. Live AQI ranking with PM2.5 data. Find out if your city is on the list. Updated hourly.",
+    "See the most polluted cities worldwide based on real-time AQI. Updated hourly with PM2.5 pollution rankings and health insights.",
   keywords: [
     "most polluted cities",
     "worst air quality",
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     "world air quality",
   ],
   openGraph: {
-    title: "Most Polluted Cities Today — Live AQI Ranking | DUST.FAZR",
+    title: "Most Polluted Cities in the World (Live AQI Ranking) | DUST.FAZR",
     description:
-      "Real-time ranking of the most polluted cities worldwide based on AQI and PM2.5 data.",
+      "See the most polluted cities worldwide based on real-time AQI. Updated hourly with PM2.5 pollution rankings and health insights.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr"}/top-most-polluted-cities`,
     siteName: "DUST.FAZR",
     type: "website",
