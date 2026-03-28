@@ -75,7 +75,7 @@ export default async function AirQualityByCountryPage() {
           </h1>
           <p className="text-base text-zinc-500 font-medium">Average AQI Rankings</p>
           <p className="text-xs text-zinc-600">
-            Ranked by average AQI across monitored cities · Data from OpenAQ
+            Ranked by average AQI across monitored cities · Data from WAQI
           </p>
         </section>
 
@@ -162,7 +162,7 @@ export default async function AirQualityByCountryPage() {
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6">
           <p>
             Country averages are calculated from real-time data collected from government monitoring
-            stations via OpenAQ. Individual city AQI values follow EPA standards. Updated hourly.
+            stations via WAQI. Individual city AQI values follow EPA standards. Updated hourly.
           </p>
         </footer>
       </main>

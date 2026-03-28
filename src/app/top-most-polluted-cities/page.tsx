@@ -85,7 +85,7 @@ function getAnalysisText(
   }
 
   paragraphs.push(
-    `This ranking updates hourly based on real-time data from government monitoring stations worldwide via OpenAQ. ` +
+    `This ranking updates hourly based on real-time data from government monitoring stations worldwide via WAQI. ` +
       `${best.name} ranks lowest among the top 10 with an AQI of ${best.aqi}. ` +
       `For detailed city-level data including PM2.5, PM10, and trend charts, click on any city above.`
   );
@@ -185,11 +185,11 @@ export default async function MostPollutedCitiesPage() {
             Live AQI Ranking
           </p>
           <p className="text-xs text-zinc-600">
-            Real-time air pollution data based on PM2.5 (OpenAQ)
+            Real-time air pollution data based on PM2.5 (WAQI)
           </p>
           {latestUpdate && (
             <p className="text-xs text-zinc-600">
-              Updated {formatTimeAgo(latestUpdate)} · Data from OpenAQ
+              Updated {formatTimeAgo(latestUpdate)} · Data from WAQI
             </p>
           )}
         </section>
@@ -339,7 +339,7 @@ export default async function MostPollutedCitiesPage() {
           <p>
             This ranking is generated from real-time air quality data
             collected from government monitoring stations worldwide via
-            OpenAQ. AQI values are calculated using EPA standards based
+            WAQI. AQI values are calculated using EPA standards based
             on PM2.5 concentrations. Rankings update hourly to reflect
             the latest conditions.
           </p>

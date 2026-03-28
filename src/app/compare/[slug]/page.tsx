@@ -279,7 +279,7 @@ export default async function ComparePage({ params }: PageProps) {
           </p>
           {latestUpdate && (
             <p className="text-xs text-zinc-600">
-              Updated {formatTimeAgo(latestUpdate)} · Data from OpenAQ
+              Updated {formatTimeAgo(latestUpdate)} · Data from WAQI
             </p>
           )}
         </section>
@@ -398,7 +398,7 @@ export default async function ComparePage({ params }: PageProps) {
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6">
           <p>
             Air quality comparison between {cityA.name} and {cityB.name} is based on real-time data
-            from government monitoring stations via OpenAQ. AQI values are calculated using EPA standards.
+            from government monitoring stations via WAQI. AQI values are calculated using EPA standards.
             Data is updated hourly for accurate comparisons.
           </p>
         </footer>

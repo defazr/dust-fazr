@@ -62,7 +62,7 @@ export function CityHero({ cityName, country, aqi, updatedAt }: Props) {
               hour: "2-digit",
               minute: "2-digit",
             })}
-            {" · Data from OpenAQ"}
+            {" · Data from WAQI"}
           </p>
         )}
 

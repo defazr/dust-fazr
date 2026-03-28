@@ -88,7 +88,7 @@ export default async function BestAirQualityCitiesPage() {
           <p className="text-base text-zinc-500 font-medium">Best Air Quality Ranking</p>
           <p className="text-xs text-zinc-600">Cities with the lowest AQI based on real-time PM2.5 data</p>
           {latestUpdate && (
-            <p className="text-xs text-zinc-600">Updated {formatTimeAgo(latestUpdate)} · Data from OpenAQ</p>
+            <p className="text-xs text-zinc-600">Updated {formatTimeAgo(latestUpdate)} · Data from WAQI</p>
           )}
         </section>
 
@@ -147,7 +147,7 @@ export default async function BestAirQualityCitiesPage() {
             </p>
             <p className="text-sm text-zinc-400 leading-relaxed">
               Air quality is dynamic and can change rapidly. This ranking updates hourly based on
-              real-time monitoring data from OpenAQ. Click on any city for detailed pollution data
+              real-time monitoring data from WAQI. Click on any city for detailed pollution data
               including PM2.5, PM10, and 24-hour trend charts.
             </p>
           </div>
@@ -178,7 +178,7 @@ export default async function BestAirQualityCitiesPage() {
 
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6">
           <p>
-            Rankings are based on real-time AQI data from government monitoring stations via OpenAQ.
+            Rankings are based on real-time AQI data from government monitoring stations via WAQI.
             AQI values follow EPA standards calculated from PM2.5 concentrations. Updated hourly.
           </p>
         </footer>

@@ -90,7 +90,7 @@ export default async function AirQualityTodayPage() {
           </p>
           {latestUpdate && (
             <p className="text-xs text-zinc-600">
-              Updated {formatTimeAgo(latestUpdate)} · Data from OpenAQ
+              Updated {formatTimeAgo(latestUpdate)} · Data from WAQI
             </p>
           )}
         </section>
@@ -213,7 +213,7 @@ export default async function AirQualityTodayPage() {
 
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6">
           <p>
-            Air quality data is sourced from government monitoring stations worldwide via OpenAQ.
+            Air quality data is sourced from government monitoring stations worldwide via WAQI.
             AQI values follow EPA standards based on PM2.5 concentrations. Updated hourly.
           </p>
         </footer>

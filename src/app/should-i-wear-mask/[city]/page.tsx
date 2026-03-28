@@ -157,7 +157,7 @@ export default async function ShouldIWearMaskPage({ params }: PageProps) {
             {needsMask ? "Mask Recommended" : "Mask Not Needed"}
           </p>
           <p className="text-xs text-zinc-600">
-            Data from OpenAQ · Updated hourly
+            Data from WAQI · Updated hourly
           </p>
         </section>
 
@@ -245,7 +245,7 @@ export default async function ShouldIWearMaskPage({ params }: PageProps) {
 
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6">
           <p>
-            Mask recommendations for {data.name} are based on real-time AQI data from government monitoring stations via OpenAQ.
+            Mask recommendations for {data.name} are based on real-time AQI data from government monitoring stations via WAQI.
             For medical advice about respiratory protection, consult a healthcare professional.
           </p>
         </footer>

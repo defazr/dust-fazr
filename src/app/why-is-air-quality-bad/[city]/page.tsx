@@ -211,7 +211,7 @@ export default async function WhyIsAirBadPage({ params }: PageProps) {
             {info.label}
           </p>
           <p className="text-xs text-zinc-600">
-            Data from OpenAQ · Updated hourly
+            Data from WAQI · Updated hourly
           </p>
         </section>
 
@@ -320,7 +320,7 @@ export default async function WhyIsAirBadPage({ params }: PageProps) {
 
         <footer className="text-xs text-neutral-700 leading-relaxed border-t border-[#1e1e1e] pt-6">
           <p>
-            Air pollution analysis for {data.name} is based on real-time data from government monitoring stations via OpenAQ.
+            Air pollution analysis for {data.name} is based on real-time data from government monitoring stations via WAQI.
             Pollution cause information is sourced from environmental research and local government reports.
           </p>
         </footer>
