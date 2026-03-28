@@ -67,6 +67,10 @@ def get_latest_data(location_id: int) -> dict:
 
 
 def collect():
+    if not OPENAQ_API_KEY:
+        print("ERROR: OPENAQ_API_KEY not set — skipping collection")
+        return
+
     conn = psycopg2.connect(DATABASE_URL)
     cur = conn.cursor()
 

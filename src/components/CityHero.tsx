@@ -10,6 +10,10 @@ interface Props {
 export function CityHero({ cityName, country, aqi, updatedAt }: Props) {
   const info = getAqiInfo(aqi);
 
+  const isStale =
+    updatedAt &&
+    Date.now() - new Date(updatedAt).getTime() > 6 * 60 * 60 * 1000;
+
   return (
     <section className="relative rounded-3xl overflow-hidden p-6 md:p-10 bg-[#121212] border border-[#1e1e1e] shadow-lg shadow-black/20">
       {/* Subtle gradient glow */}
@@ -59,6 +63,12 @@ export function CityHero({ cityName, country, aqi, updatedAt }: Props) {
               minute: "2-digit",
             })}
             {" · Data from OpenAQ"}
+          </p>
+        )}
+
+        {isStale && (
+          <p className="mt-2 text-[11px] text-amber-500/80 font-medium">
+            Data may be delayed due to temporary API issues
           </p>
         )}
       </div>
