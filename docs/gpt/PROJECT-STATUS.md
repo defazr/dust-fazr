@@ -1,13 +1,14 @@
 # DUST.FAZR — Project Status
 
-**Last Updated:** 2026-03-22 (Session 6 완료 — SEO 색인 방해 요소 제거)
+**Last Updated:** 2026-03-28 (Session 8 완료 — WAQI 전환, 데이터 파이프라인 복구)
 
 ## Overview
 SEO 중심 글로벌 공기질 플랫폼. 130개 도시 실시간 AQI/PM2.5 데이터. 232+ SSG 페이지.
 
 ## Architecture
 ```
-OpenAQ v3 API → Python Collector (Vultr cron) → PostgreSQL (Vultr Docker) → Next.js (Vercel ISR) → SEO Pages
+WAQI API → Python Collector (Vultr cron) → PostgreSQL (Vultr Docker) → Next.js (Vercel ISR) → SEO Pages
+(OpenAQ v3 fallback 유지)
 ```
 
 ## Production URLs
