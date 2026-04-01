@@ -5,7 +5,7 @@ import { getAqiInfo } from "@/lib/aqi";
 import { makeCompareSlug } from "@/lib/compare";
 import { AdSlot } from "@/components/AdSlot";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Most Polluted Cities in the World (Live AQI Ranking)",

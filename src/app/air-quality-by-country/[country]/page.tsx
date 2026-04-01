@@ -6,7 +6,7 @@ import { getAqiInfo } from "@/lib/aqi";
 import { makeCompareSlug } from "@/lib/compare";
 import { AdSlot } from "@/components/AdSlot";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 interface PageProps {
   params: Promise<{ country: string }>;

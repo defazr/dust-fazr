@@ -6,7 +6,7 @@ import { getAqiInfo } from "@/lib/aqi";
 import { AdSlot } from "@/components/AdSlot";
 import { KEYWORD_CITIES, findKeywordCity } from "@/lib/keyword-cities";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 interface PageProps {
   params: Promise<{ city: string }>;

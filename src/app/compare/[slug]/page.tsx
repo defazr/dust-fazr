@@ -8,7 +8,7 @@ import { CompareFAQ } from "@/components/FAQ";
 import { AdSlot } from "@/components/AdSlot";
 import { TrackClick } from "@/components/TrackClick";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 interface PageProps {
   params: Promise<{ slug: string }>;

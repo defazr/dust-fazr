@@ -4,7 +4,7 @@ import { getCleanestCities } from "@/lib/db";
 import { getAqiInfo } from "@/lib/aqi";
 import { AdSlot } from "@/components/AdSlot";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
