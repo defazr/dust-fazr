@@ -212,6 +212,7 @@ export default async function CityAirQualityPage({ params }: PageProps) {
 
         <TextAnalysis
           cityName={data.name}
+          citySlug={data.slug}
           country={data.country}
           airQuality={aq}
           history={data.history}

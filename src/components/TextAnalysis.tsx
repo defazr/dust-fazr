@@ -1,14 +1,17 @@
+import Link from "next/link";
 import { getAqiInfo } from "@/lib/aqi";
+import { COMPARE_PAIRS } from "@/lib/compare";
 import type { AirQualityLatest, AirQualityHistory } from "@/lib/types";
 
 interface Props {
   cityName: string;
+  citySlug: string;
   country: string;
   airQuality: AirQualityLatest | null;
   history: AirQualityHistory[];
 }
 
-export function TextAnalysis({ cityName, country, airQuality, history }: Props) {
+export function TextAnalysis({ cityName, citySlug, country, airQuality, history }: Props) {
   if (!airQuality || airQuality.aqi === null) {
     return (
       <section className="rounded-2xl bg-[#121212] border border-[#1e1e1e] p-6 md:p-8 overflow-hidden">
@@ -103,6 +106,47 @@ export function TextAnalysis({ cityName, country, airQuality, history }: Props) 
             detail={aqi <= 50 ? "Recommended" : aqi <= 100 ? "OK for short periods" : "Keep windows closed"}
           />
         </div>
+
+        {/* Contextual internal links */}
+        <p className="text-sm text-neutral-400 leading-relaxed">
+          {(() => {
+            const compare = COMPARE_PAIRS.find(
+              (pair) => pair.slugA === citySlug || pair.slugB === citySlug
+            );
+            if (compare) {
+              return (
+                <>
+                  Wondering how {cityName} compares?{" "}
+                  <Link href={`/compare/${compare.slug}`} className="text-blue-400 hover:text-blue-300 underline transition-colors">
+                    Check {compare.label} air quality comparison
+                  </Link>
+                  , explore the{" "}
+                  <Link href="/aqi-scale-explained" className="text-blue-400 hover:text-blue-300 underline transition-colors">
+                    AQI scale explained
+                  </Link>
+                  , or see today&#39;s{" "}
+                  <Link href="/top-most-polluted-cities" className="text-blue-400 hover:text-blue-300 underline transition-colors">
+                    global air quality rankings
+                  </Link>
+                  .
+                </>
+              );
+            }
+            return (
+              <>
+                Learn more about the{" "}
+                <Link href="/aqi-scale-explained" className="text-blue-400 hover:text-blue-300 underline transition-colors">
+                  AQI scale explained
+                </Link>
+                , or see today&#39;s{" "}
+                <Link href="/top-most-polluted-cities" className="text-blue-400 hover:text-blue-300 underline transition-colors">
+                  global air quality rankings
+                </Link>
+                .
+              </>
+            );
+          })()}
+        </p>
       </div>
     </section>
   );
