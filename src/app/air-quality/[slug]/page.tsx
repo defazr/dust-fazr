@@ -10,6 +10,7 @@ import { AQIChart } from "@/components/AQIChart";
 import { TextAnalysis } from "@/components/TextAnalysis";
 import { HistorySection } from "@/components/HistorySection";
 import { NearbyCities } from "@/components/NearbyCities";
+import { PopularCities } from "@/components/PopularCities";
 import { CityFAQ } from "@/components/FAQ";
 import { TrackClick } from "@/components/TrackClick";
 import { COMPARE_PAIRS } from "@/lib/compare";
@@ -233,6 +234,8 @@ export default async function CityAirQualityPage({ params }: PageProps) {
         <CityFAQ cityName={data.name} aqi={aq?.aqi ?? null} pm25={aq?.pm25 ?? null} />
 
         <NearbyCities cities={enrichedNearbyCities} currentCity={data.name} currentSlug={data.slug} />
+
+        <PopularCities currentSlug={data.slug} />
 
         {/* Compare with other cities */}
         {(() => {
