@@ -9,8 +9,15 @@ const TOP_CITY_SLUGS = [
   "seoul-air-quality",
   "tokyo-air-quality",
   "beijing-air-quality",
+  "shanghai-air-quality",
+  "sydney-air-quality",
   "new-york-air-quality",
   "london-air-quality",
+  "bangkok-air-quality",
+  "singapore-air-quality",
+  "mexico-city-air-quality",
+  "vancouver-air-quality",
+  "cairo-air-quality",
 ];
 
 const QUICK_LINKS = [
@@ -76,9 +83,9 @@ export default async function Home() {
       {topCities.length > 0 && (
         <section className="max-w-5xl mx-auto px-4 py-12">
           <h2 className="text-2xl font-bold text-white mb-8">
-            Top Cities Air Quality
+            Air Quality in Major Cities
           </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {topCities.map((city) => {
               const info = getAqiInfo(city.aqi);
               return (
