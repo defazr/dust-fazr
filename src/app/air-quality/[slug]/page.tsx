@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
-import { getCityBySlug, getAllCitySlugs } from "@/lib/db";
+import { getCityBySlug, getAllCitySlugs, getAllCitiesBasic } from "@/lib/db";
 import { getAqiInfo } from "@/lib/aqi";
 import { CityHero } from "@/components/CityHero";
 import { PollutantCards } from "@/components/PollutantCards";
@@ -93,6 +93,39 @@ export default async function CityAirQualityPage({ params }: PageProps) {
 
   const aq = data.airQuality;
   const info = getAqiInfo(aq?.aqi ?? null);
+
+  // Build nearby cities: 6 local + 2 global SEO priority
+  const SEO_PRIORITY_SLUGS = [
+    "seoul-air-quality",
+    "tokyo-air-quality",
+    "beijing-air-quality",
+    "new-york-air-quality",
+    "sydney-air-quality",
+    "london-air-quality",
+    "bangkok-air-quality",
+    "shanghai-air-quality",
+    "singapore-air-quality",
+    "cairo-air-quality",
+  ];
+
+  const nearby = data.nearbyCities.slice(0, 6);
+  const nearbySlugs = new Set(nearby.map((c) => c.slug));
+  const seoSlugs = SEO_PRIORITY_SLUGS.filter(
+    (s) => s !== data.slug && !nearbySlugs.has(s)
+  ).slice(0, 2);
+
+  let enrichedNearbyCities = nearby;
+  if (seoSlugs.length > 0) {
+    const allCities = await getAllCitiesBasic();
+    const seoCities = seoSlugs
+      .map((s) => allCities.find((c) => c.slug === s))
+      .filter((c): c is NonNullable<typeof c> => c != null);
+    enrichedNearbyCities = Array.from(
+      new Map(
+        [...nearby, ...seoCities].map((c) => [c.slug, c])
+      ).values()
+    ).slice(0, 8);
+  }
 
   // Schema.org structured data
   const schemaData = {
@@ -198,7 +231,7 @@ export default async function CityAirQualityPage({ params }: PageProps) {
 
         <CityFAQ cityName={data.name} aqi={aq?.aqi ?? null} pm25={aq?.pm25 ?? null} />
 
-        <NearbyCities cities={data.nearbyCities} currentCity={data.name} currentSlug={data.slug} />
+        <NearbyCities cities={enrichedNearbyCities} currentCity={data.name} currentSlug={data.slug} />
 
         {/* Compare with other cities */}
         {(() => {

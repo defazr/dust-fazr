@@ -201,6 +201,23 @@ export async function getTopPollutedCities(limit = 10): Promise<(City & { aqi: n
   }
 }
 
+export async function getAllCitiesBasic(): Promise<City[]> {
+  try {
+    const client = await pool.connect();
+    try {
+      const result = await client.query<City>(
+        "SELECT id, name, slug, country, latitude, longitude, is_active FROM cities WHERE is_active = TRUE ORDER BY name ASC"
+      );
+      return result.rows;
+    } finally {
+      client.release();
+    }
+  } catch {
+    console.warn("[db] getAllCitiesBasic failed (DB unavailable)");
+    return [];
+  }
+}
+
 export async function getAllCitiesWithLatest(): Promise<(City & { aqi: number | null })[]> {
   try {
     const client = await pool.connect();
