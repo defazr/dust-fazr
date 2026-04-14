@@ -26,16 +26,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const data = await getCityBySlug(slug);
   if (!data) return { title: "City Not Found" };
 
-  const aq = data.airQuality;
-  const aqiText = aq?.aqi !== null && aq?.aqi !== undefined ? `AQI ${aq.aqi}` : "Live AQI";
-  const pm25Text = aq?.pm25 !== null && aq?.pm25 !== undefined ? ` PM2.5: ${aq.pm25} µg/m³.` : "";
-  const level = aq?.aqi ? getAqiInfo(aq.aqi).label : "Real-time";
-
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dust.fazr.co.kr";
 
+  const metaTitle = `${data.name} Air Quality Today — Live AQI & Is It Safe to Go Outside?`;
+  const metaDescription = `Is it safe to go outside in ${data.name} today? Check live AQI, PM2.5 levels, and real-time air quality updates. Updated hourly.`;
+
   return {
-    title: `${data.name} Air Quality Today (${aqiText}) – Is It Safe Right Now? PM2.5 Guide`,
-    description: `Live AQI in ${data.name} is ${aqiText} (${level}).${pm25Text} Check PM2.5 levels, health effects, and whether it's safe to go outside today. Updated hourly.`,
+    title: metaTitle,
+    description: metaDescription,
     keywords: [
       `${data.name} air quality`,
       `${data.name} AQI`,
@@ -47,8 +45,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       "PM2.5 levels",
     ],
     openGraph: {
-      title: `${data.name} Air Quality (${aqiText}) – Safe to Go Outside? | DUST.FAZR`,
-      description: `Live AQI in ${data.name}: ${level}.${pm25Text} Real-time PM2.5 data and health guide.`,
+      title: metaTitle,
+      description: metaDescription,
       url: `${baseUrl}/air-quality/${slug}`,
       siteName: "DUST.FAZR",
       type: "website",
@@ -56,8 +54,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: "summary_large_image",
-      title: `${data.name} Air Quality (${aqiText}) – Safe Right Now?`,
-      description: `${data.name} air quality is ${level.toLowerCase()} today.${pm25Text} Check health guide.`,
+      title: metaTitle,
+      description: metaDescription,
       images: ["/og-default.jpg"],
     },
     alternates: {
