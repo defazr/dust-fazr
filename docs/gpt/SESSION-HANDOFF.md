@@ -1,6 +1,6 @@
 # SESSION-HANDOFF — 최신 세션 상태 요약
 
-**Last Updated:** 2026-04-05 (Session 10)
+**Last Updated:** 2026-04-14 (Session 11)
 
 ## 현재 상태
 
@@ -8,31 +8,31 @@
 |------|------|
 | ISR 최적화 | ✅ 배포 완료 (42% writes 절감) |
 | 내부링크 v4.2 | ✅ 4개 Task 전부 배포 완료 |
-| GSC 노출 | 584건 (+52%), 순위 39.7 진입 |
+| CTR 최적화 | ✅ 메타 교체 배포 완료 (동적 AQI 제거) |
+| GSC 노출 | 1,084건, CTR 0.28%, 순위 40~60위 |
 | GSC 색인 | 219/223 (98%) |
 | 데이터 파이프라인 | ✅ WAQI 정상 (129/130 도시) |
 
 ## 마지막 커밋
 
 ```
-f8ac49f feat: add PopularCities component for hub-and-spoke link structure
-eb0def2 feat: add contextual internal links to TextAnalysis section
-f072496 feat: add 2 global SEO cities to NearbyCities (6 local + 2 global)
-d1100bf feat: expand homepage top cities from 5 to 12 for SEO authority
+41528cb feat: CTR optimize city page meta — remove dynamic AQI data, unify OG/Twitter
 ```
 
 ## 현재 방침
 
-**4/8~10까지 대기. 건드리지 않음.**
-- 내부링크 배포(4/2) 효과 반영 대기 (최소 5~10일)
-- 지금 보이는 성장은 자연 색인 확산
+**7~14일 관찰. 건드리지 않음.**
+- CTR 최적화 배포(4/14) 효과 반영 대기
+- 3~5일 → 초기 반응, 7~14일 → 승패 결정
+- 목표: CTR 0.28% → 2%+
 
-## 다음 작업 (4/8~10 GSC 확인 후)
+## 다음 작업 (4/21~28 GSC 확인 후)
 
 | 결과 | 다음 작업 |
 |------|----------|
-| 순위 상승 (20~30위 진입) | CTR 최적화 |
-| 정체 | 내부링크 2차 강화 |
+| CTR 상승 (1%+) | 상위 10위 진입용 2차 최적화 |
+| CTR 정체 | 메타 패턴 2차 수정 |
+| CTR 하락 | 원인 분석 → 롤백 또는 재설계 |
 
 ## 핵심 규칙 (변동 없음)
 
@@ -45,6 +45,7 @@ d1100bf feat: expand homepage top cities from 5 to 12 for SEO authority
 
 | 세션 | 날짜 | 주요 작업 | 문서 |
 |------|------|----------|------|
+| 11 | 2026-04-14 | CTR 최적화 메타 교체 배포 | GPT-HANDOFF-2026-04-14.md |
 | 10 | 2026-04-05 | 내부링크 v4.2 배포 + GSC 분석 | GPT-HANDOFF-2026-04-05.md |
 | 9 | 2026-04-01 | ISR 최적화 + 내부링크 리뷰 | GPT-HANDOFF-2026-04-01.md |
 | 8 | 2026-03-28 | WAQI 전환 + CTR 최적화 | 2026-03-28-session8-waqi-transition.md |
