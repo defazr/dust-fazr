@@ -61,14 +61,13 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <head>
-        <script
+      <body className="min-h-screen bg-black text-white">
+        <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7976139023602789"
           crossOrigin="anonymous"
+          strategy="afterInteractive"
         />
-      </head>
-      <body className="min-h-screen bg-black text-white">
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-3W9P03K820"
           strategy="afterInteractive"
